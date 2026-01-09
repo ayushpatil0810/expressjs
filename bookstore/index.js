@@ -1,4 +1,6 @@
 const express = require('express')
+const fs = require('fs')
+
 const PORT = 8000
 
 const books = [
@@ -10,6 +12,11 @@ const app = express()
 
 // Middlewares
 app.use(express.json())
+app.use((req, res, next) => {
+    const log = `[${Date.now()}] ${req.method} ${req.path}\n`
+    fs.appendFileSync('log.txt', log, 'utf-8')
+    next()
+})
 
 // Routes
 app.get('/books', (req, res) => {
