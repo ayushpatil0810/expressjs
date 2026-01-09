@@ -1,9 +1,9 @@
 const express = require('express')
 const bookRouter = require('./routes/books.routes')
 const { loggerMiddleware } = require('./middlewares/logger')
-const PORT = 8000
 
 const app = express()
+const PORT = 8000
 
 // Middlewares
 app.use(express.json())
